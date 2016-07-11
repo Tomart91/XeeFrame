@@ -1,0 +1,8 @@
+RewriteEngine on
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d 
+
+RewriteRule ^(.*)$ /index.php?control=$1 [NC,N,QSA,L] 
+RewriteRule ^$ /index.php [NC,N,QSA,L]
+
+ErrorDocument 404 /view/NotFound.php 
