@@ -18,7 +18,9 @@ class Viewer {
 		$model->path = 'modules/' . $request->getModule() . '/view';
 		return $model;
 	}
-
+	public function assign($key, $value){
+		$this->smarty->assign($key, $value);
+	}
 	public function view($file = '') {
 		$filePath = $this->path . '/' . $file;
 		if (!file_exists($filePath)) {

@@ -3,6 +3,12 @@
 namespace core\controller;
 
 abstract class BasicController {
+	public function __construct() {
+		$this->headerCss();
+		$this->footerJs();
+	}
+	public $headerCss = [];
+	public $footerJs = [];
 
 	function checkPermission() {
 		
@@ -26,6 +32,22 @@ abstract class BasicController {
 
 	function showFooter(\core\Request $request) {
 		
+	}
+
+	function addHeaderCss($file) {
+		$this->headerCss[] = $file;
+	}
+
+	function addFooterJs($file) {
+		$this->footerJs[] = $file;
+	}
+
+	function getHeaderCss() {
+		return $this->headerCss;
+	}
+
+	function getFooterJs() {
+		return $this->footerJs;
 	}
 
 }
