@@ -12,19 +12,19 @@ abstract class BasicController {
 		
 	}
 
-	function preProcess() {
+	function preProcess(\core\Request $request) {
 		
 	}
 
-	function process() {
+	function process(\core\Request $request) {
 		
 	}
 
-	function postProcess() {
+	function postProcess(\core\Request $request) {
 		
 	}
 
-	function showFooter() {
+	function showFooter(\core\Request $request) {
 		
 	}
 

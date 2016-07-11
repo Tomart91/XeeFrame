@@ -16,6 +16,8 @@ if (empty($controller[1])) {
 } else {
 	$action = $controller[1];
 }
+$request->set('moduleName', $moduleName);
+$request->set('actionName', $action);
 $moduleName = ucwords($moduleName);
 $action = ucwords($action);
 $controllerName = '\modules\\' . $moduleName . '\\controller\\' . $action;

@@ -7,4 +7,8 @@ class ClientController extends BasicController {
 		$viewer = \core\Viewer::getInstance($request);
 		$viewer->view('Header.tpl');
 	}
+	public function showFooter(\core\Request $request) {
+		$viewer = \core\Viewer::getInstance($request);
+		$viewer->view('Footer.tpl');
+	}
 }
