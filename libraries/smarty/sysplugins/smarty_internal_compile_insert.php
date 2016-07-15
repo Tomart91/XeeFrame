@@ -66,7 +66,7 @@ class Smarty_Internal_Compile_Insert extends Smarty_Internal_CompileBase
 
         $_output = '<?php ';
         // save possible attributes
-        eval('$_name = @' . $_attr['name'] . ';');
+        $_name = $$_attr['name'];
         if (isset($_attr['assign'])) {
             // output will be stored in a smarty variable instead of being displayed
             $_assign = $_attr['assign'];
@@ -83,7 +83,7 @@ class Smarty_Internal_Compile_Insert extends Smarty_Internal_CompileBase
             $_function = "smarty_insert_{$_name}";
             $_smarty_tpl = $compiler->template;
             $_filepath = false;
-            eval('$_script = @' . $_attr['script'] . ';');
+            $_script = $$_attr['script'];
             if (!isset($compiler->smarty->security_policy) && file_exists($_script)) {
                 $_filepath = $_script;
             } else {

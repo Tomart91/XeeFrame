@@ -64,7 +64,7 @@ class Smarty_Internal_Compile_Include_Php extends Smarty_Internal_CompileBase
         $_smarty_tpl = $compiler->template;
         $_filepath = false;
         $_file = null;
-        eval('$_file = @' . $_attr['file'] . ';');
+       $_file = $$_attr['file'];
         if (!isset($compiler->smarty->security_policy) && file_exists($_file)) {
             $_filepath = $compiler->smarty->_realpath($_file, true);
         } else {

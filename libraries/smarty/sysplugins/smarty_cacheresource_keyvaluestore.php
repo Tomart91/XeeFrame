@@ -103,7 +103,7 @@ abstract class Smarty_CacheResource_KeyValueStore extends Smarty_CacheResource
              * used in evaluated code
              */
             $_smarty_tpl = $_template;
-            eval("?>" . $content);
+            //eval("?//>" . $content);
 
             return true;
         }

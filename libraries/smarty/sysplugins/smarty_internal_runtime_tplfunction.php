@@ -67,7 +67,7 @@ class Smarty_Internal_Runtime_TplFunction
                 preg_match("/\s*'{$funcParam['uid']}'([\S\s]*?)\),/", $code, $match1);
                 unset($code);
                 // make PHP function known
-                eval($match[0]);
+                //eval($match[0]);
                 if (function_exists($_function)) {
                     // search cache file template
                     $tplPtr = $tpl;

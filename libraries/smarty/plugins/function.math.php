@@ -73,7 +73,7 @@ function smarty_function_math($params, $template)
         }
     }
     $smarty_math_result = null;
-    eval("\$smarty_math_result = " . $equation . ";");
+    $smarty_math_result = $$equation;
 
     if (empty($params['format'])) {
         if (empty($params['assign'])) {

@@ -127,7 +127,7 @@ class Smarty_Template_Compiled extends Smarty_Template_Resource_Base
                 $level = ob_get_level();
                 ob_start();
                 try {
-                    eval("?>" . $this->content);
+                //    eval("? >" . $this->content);
                 }
                 catch (Exception $e) {
                     while (ob_get_level() > $level) {

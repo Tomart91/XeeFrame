@@ -64,14 +64,14 @@ class Database {
 	}
 
 	public function where($where, array $params) {
-		$this->query .= ' WHERE ' . $where;
+		$this->query .= sprintf(' WHERE %s', $where);
 		$this->params = $params;
 		return $this;
 	}
 
 	public function orderBy($column, $inc) {
 		if (in_array($inc, ['ASC', 'DESC'])) {
-			$this->query .= $this->printf(' ORDER BY %s ' . $inc, $column);
+			$this->query .= $this->printf(" ORDER BY %s $inc", $column);
 		}
 		return $this;
 	}

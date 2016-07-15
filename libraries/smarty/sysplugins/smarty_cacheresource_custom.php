@@ -138,7 +138,7 @@ abstract class Smarty_CacheResource_Custom extends Smarty_CacheResource
              * used in evaluated code
              */
             $_smarty_tpl = $_template;
-            eval("?>" . $content);
+       //     eval("? >" . $content);
             $cached->content = null;
             return true;
         }
