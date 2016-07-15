@@ -11,10 +11,10 @@ class Viewer {
 		$model = new self();
 		require_once('libraries/smarty/Smarty.class.php');
 		$model->smarty = new \Smarty();
-		$model->smarty->setTemplateDir('/cache/smarty/templates');
-		$model->smarty->setCompileDir('/cache/smarty/templates_c');
-		$model->smarty->setCacheDir('/cache/smarty/cache');
-		$model->smarty->setConfigDir('/cache/smarty/configs');
+		$model->smarty->setTemplateDir(ROOT_DIR . '/cache/smarty/templates');
+		$model->smarty->setCompileDir(ROOT_DIR . '/cache/smarty/templates_c');
+		$model->smarty->setCacheDir(ROOT_DIR . '/cache/smarty/cache');
+		$model->smarty->setConfigDir(ROOT_DIR . '/cache/smarty/configs');
 		$model->path = 'modules/' . $request->getModule() . '/view';
 		return $model;
 	}

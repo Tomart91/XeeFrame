@@ -3,10 +3,12 @@
 namespace core\controller;
 
 abstract class BasicController {
+
 	public function __construct() {
 		$this->headerCss();
 		$this->footerJs();
 	}
+
 	public $headerCss = [];
 	public $footerJs = [];
 

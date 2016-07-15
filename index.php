@@ -1,9 +1,9 @@
 <?php
 
 require 'AutoLoader.php';
-define('ROOT_DIR', $_SERVER['DOCUMENT_ROOT']);
+define('ROOT_DIR', __DIR__);
 $request = core\Request::getInstance();
-
+\core\database\Database::connect();
 $controller = $request->get('control');
 $controller = explode('//', $controller);
 $moduleName = $controller[0];
