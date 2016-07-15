@@ -18,7 +18,6 @@ class Viewer {
 	}
 
 	public function view($file = '') {
-		require_once('libraries/Twig/Autoloader.php');
 		\Twig_Autoloader::register();
 		$filePath = $this->path . '/' . $file;
 		if (!file_exists($filePath)) {

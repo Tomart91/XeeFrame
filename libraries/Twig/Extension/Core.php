@@ -634,7 +634,7 @@ if (PHP_VERSION_ID < 50300) {
      *
      * @return mixed The JSON encoded value
      */
-    function twig_jsonencode_filter($value, $options = 0)
+    function twig_jsonencode_filter($value)
     {
         if ($value instanceof Twig_Markup) {
             $value = (string) $value;
@@ -1155,7 +1155,7 @@ if (function_exists('mb_convert_encoding')) {
         return iconv($from, $to, $string);
     }
 } else {
-    function twig_convert_encoding($string, $to, $from)
+    function twig_convert_encoding()
     {
         throw new Twig_Error_Runtime('No suitable convert encoding function (use UTF-8 as your encoding or install the iconv or mbstring extension).');
     }

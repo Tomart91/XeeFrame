@@ -23,8 +23,8 @@ class ClientController extends BasicController {
 	}
 
 	function footerJs() {
-		$this->addFooterJs('libraries/jquery/jquery-2.2.3.js');
-		$this->addFooterJs('libraries/bootstrap/js/bootstrap.js');
+		$this->addFooterJs('libraries/jquery/jquery-2.2.3.min.js');
+		$this->addFooterJs('libraries/bootstrap/js/bootstrap.min.js');
 		$this->addFooterJs('http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js');
 		$this->addFooterJs('https://maps.googleapis.com/maps/api/js?key=AIzaSyCRngKslUGJTlibkQ3FkfTxj3Xss1UlZDA&sensor=false');
 		$this->addFooterJs('resources/js/grayscale.js');
