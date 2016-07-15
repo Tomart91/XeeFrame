@@ -6,7 +6,7 @@ class Index extends \core\controller\ClientController {
 
 	public function process(\core\Request $request) {
 		$viewer = \core\Viewer::getInstance($request);
-		$viewer->view('Index.tpl');
+		$viewer->view('Index.twig');
 	}
 
 }

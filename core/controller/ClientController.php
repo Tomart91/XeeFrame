@@ -7,13 +7,13 @@ class ClientController extends BasicController {
 	public function showHeader(\core\Request $request) {
 		$viewer = \core\Viewer::getInstance($request);
 		$viewer->assign('CSS_SCRIPTS', $this->getHeaderCss());
-		$viewer->view('Header.tpl');
+		$viewer->view('Header.twig');
 	}
 
 	public function showFooter(\core\Request $request) {
 		$viewer = \core\Viewer::getInstance($request);
 		$viewer->assign('JS_SCRIPTS', $this->getFooterJs());
-		$viewer->view('Footer.tpl');
+		$viewer->view('Footer.twig');
 	}
 
 	function headerCss() {

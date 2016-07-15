@@ -4,29 +4,33 @@ namespace core;
 
 class Viewer {
 
-	public $smarty;
 	public $path;
+	public $variable = [];
 
 	static function getInstance(\core\Request $request) {
 		$model = new self();
-		require_once('libraries/smarty/Smarty.class.php');
-		$model->smarty = new \Smarty();
-		$model->smarty->setTemplateDir(ROOT_DIR . '/cache/smarty/templates');
-		$model->smarty->setCompileDir(ROOT_DIR . '/cache/smarty/templates_c');
-		$model->smarty->setCacheDir(ROOT_DIR . '/cache/smarty/cache');
-		$model->smarty->setConfigDir(ROOT_DIR . '/cache/smarty/configs');
-		$model->path = 'modules/' . $request->getModule() . '/view';
+		$model->path = ROOT_DIR . '/modules/' . $request->getModule() . '/view';
 		return $model;
 	}
-	public function assign($key, $value){
-		$this->smarty->assign($key, $value);
+
+	public function assign($key, $value) {
+		$this->variable[$key] = $value;
 	}
+
 	public function view($file = '') {
+		require_once('libraries/Twig/Autoloader.php');
+		\Twig_Autoloader::register();
 		$filePath = $this->path . '/' . $file;
 		if (!file_exists($filePath)) {
-			$filePath = 'view/' . $file;
+			$filePath = ROOT_DIR . '/view/' . $file;
+			$this->path = ROOT_DIR . '/view/';
 		}
-		$this->smarty->display($filePath);
+		$loader = new \Twig_Loader_Filesystem($this->path);
+		$twig = new \Twig_Environment($loader, [
+			'cache' => ROOT_DIR . '/cache/twig/cache',
+			'strict_variables' => true
+		]);
+		echo $twig->render($file, $this->variable);
 	}
 
 }
