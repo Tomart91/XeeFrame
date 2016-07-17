@@ -11,6 +11,7 @@ class Database {
 	private $query = '';
 	private $params = [];
 	protected $nameQuote = '`';
+	public static $debugQuery = [];
 
 	static function connect() {
 		$dsn = 'mysql:dbname=' . AppConfig::get('dbDatabse') . ';host=' . AppConfig::get('dbAddress');
@@ -24,8 +25,14 @@ class Database {
 	}
 
 	public function doQuery($query, $params = []) {
+		$timeStart = microtime(true);
 		$stmt = self::$database->prepare($query);
 		$stmt->execute($params);
+		self::$debugQuery [] = DebugQuery::getInstance([
+					'query' => $query,
+					'params' => $params,
+					'time' =>  microtime(true) - $timeStart
+		]);
 		return Result::getInstance($stmt);
 	}
 

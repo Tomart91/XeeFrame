@@ -9,7 +9,8 @@ class AppConfig {
 		'dbPass' => '',
 		'dbAddress' => 'localhost',
 		'dbPort' => '3306',
-		'dbDatabse' => 'XeeFrame'
+		'dbDatabse' => 'XeeFrame',
+		'isDebug' => true
 	];
 
 	static public function get($key) {

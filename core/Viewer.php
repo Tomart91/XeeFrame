@@ -26,7 +26,7 @@ class Viewer {
 		}
 		$loader = new \Twig_Loader_Filesystem($this->path);
 		$twig = new \Twig_Environment($loader, [
-			'cache' => ROOT_DIR . '/cache/twig/cache',
+			//'cache' => ROOT_DIR . '/cache/twig/cache',
 			'strict_variables' => true
 		]);
 		echo $twig->render($file, $this->variable);

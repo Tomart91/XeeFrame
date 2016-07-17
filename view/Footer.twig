@@ -1,5 +1,8 @@
 			
 </div>
+{% if IS_DEBUG  %}
+	{{ include('Console.twig') }}
+{% endif %}
 {% for SCRIPT in  JS_SCRIPTS %}
 	<script src="{{SCRIPT}}" type="text/javascript"></script>
 {% endfor %}

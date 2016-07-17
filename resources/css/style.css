@@ -1,0 +1,15 @@
+.consoleConatainer{
+	position: fixed;
+	top: 70%;
+	height:30%;
+	background: #fff;
+	border-top: 1px solid #ddd;
+	color: #aaa;
+}
+.progress {
+	height: 5px !important;
+}
+.sqlContainer{
+	height: calc(100% - 42px);
+	overflow: auto;
+}

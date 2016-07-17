@@ -12,7 +12,10 @@ class ClientController extends BasicController {
 
 	public function showFooter(\core\Request $request) {
 		$viewer = \core\Viewer::getInstance($request);
+		$viewer->assign('IS_DEBUG', \core\AppConfig::get('isDebug'));
 		$viewer->assign('JS_SCRIPTS', $this->getFooterJs());
+		$viewer->assign('TIME_TO_SHOW',  microtime(true) - START_TIME);
+		$viewer->assign('DEBUG_QUERIES', \core\database\Database::$debugQuery);
 		$viewer->view('Footer.twig');
 	}
 
@@ -20,6 +23,7 @@ class ClientController extends BasicController {
 		$this->addHeaderCss('libraries/bootstrap/css/bootstrap.css');
 		$this->addHeaderCss('resources/css/font-awesome.css');
 		$this->addHeaderCss('resources/css/grayscale.css');
+		$this->addHeaderCss('resources/css/style.css');
 	}
 
 	function footerJs() {

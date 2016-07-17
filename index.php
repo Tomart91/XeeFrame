@@ -1,7 +1,8 @@
 <?php
-
+$startTime = microtime(true);
 require 'AutoLoader.php';
 define('ROOT_DIR', __DIR__);
+define('START_TIME', $startTime);
 $request = core\Request::getInstance();
 \core\database\Database::connect();
 $controller = $request->get('control');
