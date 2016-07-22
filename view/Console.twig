@@ -7,7 +7,6 @@
 	<div class="tab-content">
 		<div role="tabpanel" class="tab-pane active" id="home">
 			<div class="sqlContainer">
-				<h4>SQL</h4>
 				{% for QUERY in DEBUG_QUERIES %}
 					Query: {{QUERY.get('query')}}<br>
 					Params: {{QUERY.displayParams()}}<br>
@@ -28,8 +27,7 @@
 						<button class="btn btn-xs btn-primary pull-right" role="button" data-toggle="collapse" href="#collapseExample{{ loop.index }}" 
 								aria-expanded="false" aria-controls="collapseExample{{ loop.index }}">
 							Backtrace
-						</button>
-						
+						</button>						
 						<div class="collapse" id="collapseExample{{ loop.index }}">
 							<div class="well">
 								{% for TRACE in ERROR['backTrace'] %}
