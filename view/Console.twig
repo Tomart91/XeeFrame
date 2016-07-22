@@ -19,7 +19,28 @@
 				{% endfor %}
 			</div>
 		</div>
-		<div role="tabpanel" class="tab-pane" id="profile">..dffdgdgdf.</div>
+		<div role="tabpanel" class="tab-pane" id="profile">
+			<div class="sqlContainer">
+				{% for ERROR in ERRORS %}
+					<div class="col-xs-12 well">
+						{{ERROR['errorNo']}}: {{ERROR['errorstr']}}<br>
+						{{ERROR['errorFile']}} in line {{ERROR['errorLine']}}
+						<button class="btn btn-xs btn-primary pull-right" role="button" data-toggle="collapse" href="#collapseExample{{ loop.index }}" 
+								aria-expanded="false" aria-controls="collapseExample{{ loop.index }}">
+							Backtrace
+						</button>
+						
+						<div class="collapse" id="collapseExample{{ loop.index }}">
+							<div class="well">
+								{% for TRACE in ERROR['backTrace'] %}
+									{{TRACE}}<br>
+								{% endfor %}
+							</div>
+						</div>
+					</div>
+				{% endfor %}
+			</div>
+		</div>
 		<div role="tabpanel" class="tab-pane" id="messages">dsdfsdf</div>
 	</div>
 </div>

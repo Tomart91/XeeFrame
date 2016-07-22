@@ -16,6 +16,7 @@ class ClientController extends BasicController {
 		$viewer->assign('JS_SCRIPTS', $this->getFooterJs());
 		$viewer->assign('TIME_TO_SHOW',  microtime(true) - START_TIME);
 		$viewer->assign('DEBUG_QUERIES', \core\database\Database::$debugQuery);
+		$viewer->assign('ERRORS', \core\XeeException::$errors);
 		$viewer->view('Footer.twig');
 	}
 

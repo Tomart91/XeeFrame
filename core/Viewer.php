@@ -18,7 +18,6 @@ class Viewer {
 	}
 
 	public function view($file = '') {
-		\Twig_Autoloader::register();
 		$filePath = $this->path . '/' . $file;
 		if (!file_exists($filePath)) {
 			$filePath = ROOT_DIR . '/view/' . $file;

@@ -1,4 +1,5 @@
 <?php
+require_once('libraries/Twig/Autoloader.php');
 /**
  * Autoloader plików 
  * Na podstawie przestrzeni klasy odnajduje plik w folderach 
@@ -10,6 +11,6 @@ spl_autoload_register(function ($class_name) {
 	if(file_exists($path)){
 		require_once $path;
 	} else {
-		require_once('libraries/Twig/Autoloader.php');
+		\Twig_Autoloader::autoload($class_name);
 	}
 });
