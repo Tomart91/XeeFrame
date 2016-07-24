@@ -56,6 +56,7 @@ class Database {
 
 	public function insert($tableName, array $data) {
 		$this->query = $this->printf('INSERT INTO %s SET ', $tableName);
+		$this->params = [];
 		foreach ($data as $column => $value) {
 			$this->query .= $this->printf('%s = ?,', $column);
 			$this->params [] = $value;

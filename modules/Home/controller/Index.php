@@ -8,12 +8,30 @@ class Index extends \core\controller\ClientController {
 		$viewer = \core\Viewer::getInstance($this->request);
 		$viewer->view('Index.twig');
 	}
-	public function about(){
+
+	public function about() {
 		$viewer = \core\Viewer::getInstance($this->request);
 		$viewer->view('About.twig');
 	}
-	public function contact(){
+
+	public function contact() {
 		$viewer = \core\Viewer::getInstance($this->request);
 		$viewer->view('Contact.twig');
 	}
+
+	public function login() {
+		$viewer = \core\Viewer::getInstance($this->request);
+		$viewer->view('Login.twig');
+	}
+
+	public function processLogin() {
+		$userModel = new \core\auth\BasicUser();
+		$error = $userModel->login($this->request->get('login'), $this->request->get('pass'));
+		if ($error === true) {
+			$this->redirect('/Settings/Index');
+		} else {
+			$this->redirect('/Home/Index?mode=login&error=' . $error);
+		}
+	}
+
 }

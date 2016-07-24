@@ -2,7 +2,14 @@
 
 namespace core\controller;
 
-class ClientController extends BasicController {
+use \core\Session;
+
+class AdminController extends BasicController {
+
+	public function checkPermission() {
+		Session::startSession();
+		Session::checkLogin();
+	}
 
 	public function showHeader() {
 

@@ -23,5 +23,12 @@ class Result {
 	public function getSingleValue() {
 		return $this->result->fetchColumn();
 	}
-
+	public function isExists(){
+		$count = $this->getNumRows();
+		if($count > 0){
+			return true;
+		} else {
+			return false;
+		}
+	}
 }

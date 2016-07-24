@@ -23,7 +23,7 @@ var app = {
 		if (pjax)
 			$.pjax({
 				url: url,
-				type: 'GET',
+				type: 'POST',
 				data: params,
 				container: $('#pjaxContainer'),
 				success: checkData

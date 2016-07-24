@@ -29,20 +29,24 @@ $action = ucwords($action);
 $controllerName = '\modules\\' . $moduleName . '\\controller\\' . $action;
 
 $controllerObject = new $controllerName($request);
+try {
+	$controllerObject->checkPermission();
+	if (!core\Request::isAjax()) {
+		$controllerObject->showHeader();
+		$controllerObject->preProcess();
+	}
 
-$controllerObject->checkPermission();
-if (!core\Request::isAjax()) {
-	$controllerObject->showHeader();
-	$controllerObject->preProcess();
+	if ($request->has('mode')) {
+		$mode = $request->get('mode');
+		$controllerObject->$mode();
+	} else {
+		$controllerObject->process();
+	}
+	if (!core\Request::isAjax()) {
+		$controllerObject->postProcess();
+		$controllerObject->showFooter();
+	}
+} catch (Exception $ex) {
+	$controllerObject->redirect('/Home/Index');
 }
 
-if ($request->has('mode')) {
-	$mode = $request->get('mode');
-	$controllerObject->$mode();
-} else {
-	$controllerObject->process();
-}
-if (!core\Request::isAjax()) {
-	$controllerObject->postProcess();
-	$controllerObject->showFooter();
-}

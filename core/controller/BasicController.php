@@ -60,4 +60,8 @@ abstract class BasicController {
 		$this->addFooterJs('/modules/' . $this->request->get('moduleName') . '/js/' . $this->request->get('actionName') . '.js');
 	}
 
+	public function redirect($address) {
+		header('Location: ' . $address);
+	}
+
 }
