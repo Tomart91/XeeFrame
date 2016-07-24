@@ -20,7 +20,7 @@ abstract class BaseObject {
 	 * @param <string> $key Klucz wartości która chcemy pobrać
 	 * @return <mixed>
 	 */
-	public final function get($key) {
+	public function get($key) {
 		if (isset($this->valueMap[$key])) {
 			return $this->valueMap[$key];
 		} else {
