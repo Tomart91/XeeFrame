@@ -28,6 +28,7 @@ class Viewer {
 			//'cache' => ROOT_DIR . '/cache/twig/cache',
 			'strict_variables' => true
 		]);
+		$twig->addGlobal('Lang', new \core\Language());
 		echo $twig->render($file, $this->variable);
 	}
 

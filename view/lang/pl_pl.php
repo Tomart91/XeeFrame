@@ -1,0 +1,6 @@
+<?php
+
+$phpLang = [
+];
+$jsLang = [
+];

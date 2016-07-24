@@ -10,6 +10,7 @@ if (\core\AppConfig::get('isDebug')) {
 }
 $request = core\Request::getInstance();
 \core\database\Database::connect();
+
 $controller = $request->get('control');
 $controller = explode('/', $controller);
 $moduleName = $controller[0];
@@ -24,6 +25,7 @@ if (empty($controller[1])) {
 }
 $request->set('moduleName', $moduleName);
 $request->set('actionName', $action);
+core\Language::$defaultModule = $moduleName;
 $moduleName = ucwords($moduleName);
 $action = ucwords($action);
 $controllerName = '\modules\\' . $moduleName . '\\controller\\' . $action;
