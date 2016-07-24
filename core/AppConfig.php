@@ -10,7 +10,8 @@ class AppConfig {
 		'dbAddress' => 'localhost',
 		'dbPort' => '3306',
 		'dbDatabse' => 'XeeFrame',
-		'isDebug' => false
+		'isDebug' => false,
+		'apiKey' => 'E4HD9h4DhS23DYfhHemkS3Nf' // 
 	];
 
 	static public function get($key) {
