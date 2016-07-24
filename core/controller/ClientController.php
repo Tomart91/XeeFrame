@@ -25,18 +25,18 @@ class ClientController extends BasicController {
 	}
 
 	function headerCss() {
-		$this->addHeaderCss('libraries/bootstrap/css/bootstrap.css');
-		$this->addHeaderCss('resources/css/font-awesome.css');
-		$this->addHeaderCss('resources/css/grayscale.css');
-		$this->addHeaderCss('resources/css/style.css');
+		$this->addHeaderCss('/libraries/bootstrap/css/bootstrap.css');
+		$this->addHeaderCss('/resources/css/font-awesome.css');
+		$this->addHeaderCss('/resources/css/grayscale.css');
+		$this->addHeaderCss('/resources/css/style.css');
 	}
 
 	function footerJs() {
-		$this->addFooterJs('libraries/jquery/jquery-2.2.3.min.js');
-		$this->addFooterJs('libraries/bootstrap/js/bootstrap.min.js');
+		$this->addFooterJs('/libraries/jquery/jquery-2.2.3.min.js');
+		$this->addFooterJs('/libraries/bootstrap/js/bootstrap.min.js');
 		$this->addFooterJs('http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js');
 		$this->addFooterJs('https://maps.googleapis.com/maps/api/js?key=AIzaSyCRngKslUGJTlibkQ3FkfTxj3Xss1UlZDA&sensor=false');
-		$this->addFooterJs('resources/js/grayscale.js');
+		$this->addFooterJs('/resources/js/grayscale.js');
 		parent::footerJs();
 	}
 

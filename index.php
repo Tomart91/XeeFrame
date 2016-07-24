@@ -11,7 +11,7 @@ if (\core\AppConfig::get('isDebug')) {
 $request = core\Request::getInstance();
 \core\database\Database::connect();
 $controller = $request->get('control');
-$controller = explode('//', $controller);
+$controller = explode('/', $controller);
 $moduleName = $controller[0];
 
 if (empty($moduleName)) {
@@ -31,13 +31,18 @@ $controllerName = '\modules\\' . $moduleName . '\\controller\\' . $action;
 $controllerObject = new $controllerName($request);
 
 $controllerObject->checkPermission();
-$controllerObject->showHeader();
-$controllerObject->preProcess();
+if (!core\Request::isAjax()) {
+	$controllerObject->showHeader();
+	$controllerObject->preProcess();
+}
+
 if ($request->has('mode')) {
 	$mode = $request->get('mode');
 	$controllerObject->$mode();
 } else {
 	$controllerObject->process();
 }
-$controllerObject->postProcess();
-$controllerObject->showFooter();
+if (!core\Request::isAjax()) {
+	$controllerObject->postProcess();
+	$controllerObject->showFooter();
+}

@@ -8,5 +8,8 @@ class Index extends \core\controller\ClientController {
 		$viewer = \core\Viewer::getInstance($this->request);
 		$viewer->view('Index.twig');
 	}
-
+	public function about(){
+		$viewer = \core\Viewer::getInstance($this->request);
+		$viewer->view('About.twig');
+	}
 }

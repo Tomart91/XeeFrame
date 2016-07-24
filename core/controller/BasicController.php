@@ -8,7 +8,7 @@ abstract class BasicController {
 		$this->request = $request;
 		$this->headerCss();
 		$this->footerJs();
-		$this->addFooterJs('resources/js/app.js');
+		$this->addFooterJs('/resources/js/app.js');
 	}
 
 	public $request = false;
@@ -56,7 +56,7 @@ abstract class BasicController {
 	}
 
 	function footerJs() {
-		$this->addFooterJs('modules/' . $this->request->get('moduleName') . '/js/' . $this->request->get('actionName') . '.js');
+		$this->addFooterJs('/modules/' . $this->request->get('moduleName') . '/js/' . $this->request->get('actionName') . '.js');
 	}
 
 }

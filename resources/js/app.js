@@ -1,6 +1,6 @@
 var app = {
 	request: function (url, params, type, callback, errorCallback, pjax) {
-		params['csrf_token'] = app.getMainParams('csrf_token');
+		//params['csrf_token'] = app.getMainParams('csrf_token');
 		var checkData = function (response) {
 			try {
 				var resp = JSON.parse(response);
@@ -10,7 +10,8 @@ var app = {
 					callback(response);
 				}
 			} catch (e) {
-				errorCallback(response);
+				if(typeof errorCallback == 'function')
+					errorCallback(response);
 			}
 		};
 		$.ajax({
