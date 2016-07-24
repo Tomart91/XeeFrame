@@ -4,17 +4,21 @@ namespace core\controller;
 
 class ClientController extends BasicController {
 
-	public function showHeader(\core\Request $request) {
-		$viewer = \core\Viewer::getInstance($request);
+	public function showHeader() {
+
+		$viewer = \core\Viewer::getInstance($this->request);
+		$viewer->assign('MODULE_NAME', $this->request->get('moduleName'));
+		$viewer->assign('ACTION_NAME', $this->request->get('actionName'));
+		$viewer->assign('MODE_NAME', $this->request->get('mode'));
 		$viewer->assign('CSS_SCRIPTS', $this->getHeaderCss());
 		$viewer->view('Header.twig');
 	}
 
-	public function showFooter(\core\Request $request) {
-		$viewer = \core\Viewer::getInstance($request);
+	public function showFooter() {
+		$viewer = \core\Viewer::getInstance($this->request);
 		$viewer->assign('IS_DEBUG', \core\AppConfig::get('isDebug'));
 		$viewer->assign('JS_SCRIPTS', $this->getFooterJs());
-		$viewer->assign('TIME_TO_SHOW',  microtime(true) - START_TIME);
+		$viewer->assign('TIME_TO_SHOW', microtime(true) - START_TIME);
 		$viewer->assign('DEBUG_QUERIES', \core\database\Database::$debugQuery);
 		$viewer->assign('ERRORS', \core\XeeException::$errors);
 		$viewer->view('Footer.twig');
@@ -33,6 +37,7 @@ class ClientController extends BasicController {
 		$this->addFooterJs('http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js');
 		$this->addFooterJs('https://maps.googleapis.com/maps/api/js?key=AIzaSyCRngKslUGJTlibkQ3FkfTxj3Xss1UlZDA&sensor=false');
 		$this->addFooterJs('resources/js/grayscale.js');
+		parent::footerJs();
 	}
 
 }

@@ -28,10 +28,16 @@ $moduleName = ucwords($moduleName);
 $action = ucwords($action);
 $controllerName = '\modules\\' . $moduleName . '\\controller\\' . $action;
 
-$controllerObject = new $controllerName();
+$controllerObject = new $controllerName($request);
+
 $controllerObject->checkPermission();
-$controllerObject->showHeader($request);
-$controllerObject->preProcess($request);
-$controllerObject->process($request);
-$controllerObject->postProcess($request);
-$controllerObject->showFooter($request);
+$controllerObject->showHeader();
+$controllerObject->preProcess();
+if ($request->has('mode')) {
+	$mode = $request->get('mode');
+	$controllerObject->$mode();
+} else {
+	$controllerObject->process();
+}
+$controllerObject->postProcess();
+$controllerObject->showFooter();

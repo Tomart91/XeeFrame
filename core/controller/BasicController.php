@@ -4,11 +4,14 @@ namespace core\controller;
 
 abstract class BasicController {
 
-	public function __construct() {
+	public function __construct(\core\Request $request) {
+		$this->request = $request;
 		$this->headerCss();
 		$this->footerJs();
+		$this->addFooterJs('resources/js/app.js');
 	}
 
+	public $request = false;
 	public $headerCss = [];
 	public $footerJs = [];
 
@@ -16,23 +19,23 @@ abstract class BasicController {
 		
 	}
 
-	function showHeader(\core\Request $request) {
+	function showHeader() {
 		
 	}
 
-	function preProcess(\core\Request $request) {
+	function preProcess() {
 		
 	}
 
-	function process(\core\Request $request) {
+	function process() {
 		
 	}
 
-	function postProcess(\core\Request $request) {
+	function postProcess() {
 		
 	}
 
-	function showFooter(\core\Request $request) {
+	function showFooter() {
 		
 	}
 
@@ -50,6 +53,10 @@ abstract class BasicController {
 
 	function getFooterJs() {
 		return $this->footerJs;
+	}
+
+	function footerJs() {
+		$this->addFooterJs('modules/' . $this->request->get('moduleName') . '/js/' . $this->request->get('actionName') . '.js');
 	}
 
 }
