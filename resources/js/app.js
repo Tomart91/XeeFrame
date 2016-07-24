@@ -3,23 +3,34 @@ var app = {
 		//params['csrf_token'] = app.getMainParams('csrf_token');
 		var checkData = function (response) {
 			try {
-				var resp = JSON.parse(response);
-				if (resp.error == 'NO PERMISSION') {
-					window.location.href = resp.link;
-				} else {
-					callback(response);
-				}
+				callback(response);
+				/*var resp = JSON.parse(response);
+				 if (resp.error == 'NO PERMISSION') {
+				 window.location.href = resp.link;
+				 } else {
+				 console.log(response);
+				 
+				 }*/
 			} catch (e) {
-				if(typeof errorCallback == 'function')
+				if (typeof errorCallback == 'function')
 					errorCallback(response);
 			}
 		};
-		$.ajax({
-			url: url,
-			type: type,
-			data: params,
-			success: checkData
-		});
+		if (pjax)
+			$.pjax({
+				url: url,
+				type: 'GET',
+				data: params,
+				container: $('#pjaxContainer'),
+				success: checkData
+			});
+		else
+			$.ajax({
+				url: url,
+				type: type,
+				data: params,
+				success: checkData
+			});
 	},
 	pjax: function (url, params, type, callback, errorCallback) {
 		app.request(url, params, type, callback, errorCallback, true);

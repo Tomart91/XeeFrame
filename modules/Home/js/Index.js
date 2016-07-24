@@ -4,7 +4,7 @@ function Home_Index() {
 			var currentTarget = $(e.currentTarget);
 			var url = currentTarget.data('url');
 			app.pjax(url, {}, 'GET', function (response) {
-				
+				console.log('sdfsdf');
 			});
 		});
 	};
