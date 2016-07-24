@@ -1,8 +1,12 @@
 var app = {
 	request: function (url, params, type, callback, errorCallback, pjax) {
 		//params['csrf_token'] = app.getMainParams('csrf_token');
+		var progressObject = new Progress();
+		progressObject.show();
+	
 		var checkData = function (response) {
 			try {
+				progressObject.hide();
 				callback(response);
 				/*var resp = JSON.parse(response);
 				 if (resp.error == 'NO PERMISSION') {

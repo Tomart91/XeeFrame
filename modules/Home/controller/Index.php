@@ -12,4 +12,8 @@ class Index extends \core\controller\ClientController {
 		$viewer = \core\Viewer::getInstance($this->request);
 		$viewer->view('About.twig');
 	}
+	public function contact(){
+		$viewer = \core\Viewer::getInstance($this->request);
+		$viewer->view('Contact.twig');
+	}
 }

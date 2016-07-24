@@ -8,6 +8,7 @@ abstract class BasicController {
 		$this->request = $request;
 		$this->headerCss();
 		$this->footerJs();
+		$this->addFooterJs('/resources/js/progress.js');
 		$this->addFooterJs('/resources/js/app.js');
 	}
 
