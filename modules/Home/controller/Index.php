@@ -5,6 +5,12 @@ namespace modules\Home\controller;
 class Index extends \core\controller\ClientController {
 
 	public function process() {
+		echo "<pre class='pull-left text-left'>";
+		var_dump($_FILES);
+		echo "</pre>";
+		$validModel = \core\http\File::getInstance($_FILES['fileToUpload']);
+		$validModel->setWrongExtensions();
+		$validModel->save();
 		$viewer = \core\Viewer::getInstance($this->request);
 		$viewer->view('Index.twig');
 	}

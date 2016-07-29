@@ -37,10 +37,11 @@ try {
 		$controllerObject->showHeader();
 		$controllerObject->preProcess();
 	}
-
 	if ($request->has('mode')) {
 		$mode = $request->get('mode');
-		$controllerObject->$mode();
+		if(method_exists($controllerObject, $mode)){
+			$controllerObject->$mode();
+		}
 	} else {
 		$controllerObject->process();
 	}
