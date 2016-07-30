@@ -55,6 +55,14 @@ class File {
 
 	public function validateImage() {
 		$this->validate();
+		$contents = file_get_contents($this->file['tmp_name'], null, null, 0, 100);
+		if ($contents === false) {
+			throw new Exception('');
+		}
+		$regex = '[\x01-\x08\x0c-\x1f]';
+		if (preg_match($regex, $contents)) {
+			throw new Exception('');
+		}
 	}
 
 	/** Function to sanitize the upload file name when the file name is detected to have bad extensions
