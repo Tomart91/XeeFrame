@@ -10,34 +10,34 @@
 			<input type="hidden" id="module" value="{{MODULE_NAME}}">
 			<input type="hidden" id="action" value="{{ACTION_NAME}}">
 			<input type="hidden" id="mode" value="{{MODE_NAME}}">
-			<nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
-				<div class="container">
-					<div class="navbar-header">
-						<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
-							Menu<i class="fa fa-bars"></i>
-						</button>
-						<a class="navbar-brand page-scroll link" href="#" data-url="/Home/Index">
-							<i class="fa fa-play-circle"></i> <span class="light">Start</span>
-						</a>
-					</div>
-					<div class="collapse navbar-collapse navbar-right navbar-main-collapse">
-						<ul class="nav navbar-nav">
-							<li class="hidden">
-								<a href="#page-top"></a>
-							</li>
-							<li>
-								<a class="page-scroll link" data-url="/Home/Index?mode=about" href="#">About</a>
-							</li>
-							<li>
-								<a class="page-scroll link" data-url="/Home/Index?mode=contact" href="#">Contact</a>
-							</li>
-							<li>
-								<a class="page-scroll link" data-url="/Home/Index?mode=login" href="#">Login</a>
-							</li>
-						</ul>
-					</div>
+			<div class="menuContainer">
+				<div class="logoCompany">
+
 				</div>
-			</nav>
-			<header class="intro">
-				<div class="intro-body">
-					<div class="content" id="pjaxContainer">
+				<ul class="menuMainLevel">
+					<li class="itemMenu link" data-url="/Home/Index">
+						<span class="glyphicon glyphicon-home"></span>
+						Home
+					</li>
+					<li class="itemMenu link" data-url="/Home/Index?mode=about">
+						<span class="glyphicon glyphicon-user"></span>
+						About me
+					</li>
+					<li class="itemMenu">
+						<span class="glyphicon glyphicon-camera"></span>
+						Gallery
+					</li>
+					<li class="itemMenu link" data-url="/Home/Index?mode=app">
+						<span class="glyphicon glyphicon-floppy-disk"></span>
+						Application
+					</li>
+					<li class="itemMenu link" data-url="/Home/Index?mode=contact">
+						<span class="glyphicon glyphicon-phone-alt"></span>
+						Contact
+					</li>
+				</ul>
+			</div>
+			<div class="bodyHeader">
+
+			</div>
+			<div class="mainBody" id="pjaxContainer">

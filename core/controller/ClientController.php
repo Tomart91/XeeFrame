@@ -26,8 +26,6 @@ class ClientController extends BasicController {
 
 	function headerCss() {
 		$this->addHeaderCss('/libraries/bootstrap/css/bootstrap.css');
-		$this->addHeaderCss('/resources/css/font-awesome.css');
-		$this->addHeaderCss('/resources/css/grayscale.css');
 		$this->addHeaderCss('/resources/css/style.css');
 	}
 
@@ -35,7 +33,7 @@ class ClientController extends BasicController {
 		$this->addFooterJs('/libraries/jquery/jquery-2.2.3.min.js');
 		$this->addFooterJs('/libraries/jquery/jquery.pjax.js');
 		$this->addFooterJs('/libraries/bootstrap/js/bootstrap.min.js');
-		$this->addFooterJs('/resources/js/grayscale.js');
+		$this->addFooterJs('/resources/js/layout.js');
 		parent::footerJs();
 	}
 
