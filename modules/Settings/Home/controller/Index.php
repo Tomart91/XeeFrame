@@ -1,6 +1,6 @@
 <?php
 
-namespace modules\Settings\controller;
+namespace modules\Settings\Home\controller;
 
 class Index extends \core\controller\AdminController {
 

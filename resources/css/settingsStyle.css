@@ -2,10 +2,10 @@
 	font-family: 'PTSansCaption';
 	src: url('./../fonts/PTC55F_W.eot');
 	src:
-		url('./../fonts/PTC55F_W.eot?#iefix') format('embedded-opentype'),
-		url('./../fonts/PTC55F_W.woff') format('woff'),
-		url('./../fonts/PTC55F_W.ttf') format('truetype'),
-		url('./../fonts/PTC55F_W.svg#PTSans-Caption') format('svg');
+	     url('./../fonts/PTC55F_W.eot?#iefix') format('embedded-opentype'),
+	     url('./../fonts/PTC55F_W.woff') format('woff'),
+	     url('./../fonts/PTC55F_W.ttf') format('truetype'),
+	     url('./../fonts/PTC55F_W.svg#PTSans-Caption') format('svg');
 	font-weight: normal;
 	font-style: normal;
 }
@@ -19,6 +19,7 @@ body{
 	background: #fff;
 	border-top: 1px solid #ddd;
 	color: #aaa;
+	z-index:10;
 }
 .progress {
 	height: 5px !important;
@@ -166,106 +167,133 @@ body{
 }
 .menuContainer{
 	position: fixed;
-	width: 100%;
-	height: 70px;
-	top: 0;
-	color: #fff;
-	z-index: 10;
+	top:0;
+	left:0;
+	width: 300px;
+	height:100%;
+	z-index: 7;
 }
-.menuContainer:before{
-	content: '';
-	background: #000;
-	opacity: 0.5;
-	width: 100%;
-	height: 70px;
-	position:absolute;
+.menuContainer .logoCompany{
+	height: 100px;
+	background: #c6cdd4;
 }
-
-.menuMainLevel{
-	display: inline-block;
-	white-space: nowrap;
-
+.menuContainer .menuMainLevel{
+	height: 100%;
+	background: #171d25;
+	padding-left: 0;
+	margin-left: 0;
 }
-.menuMainLevel .itemMenu{
-	float:left;
+.menuContainer .menuMainLevel .itemMenu{
+	height: 45px;
 	list-style: none;
-	text-align: center;
-	width: 150px;
-	height: 70px;
-	padding: 15px;
+	text-transform: uppercase;
 	color: #fff;
-	position: relative;	
-}
-.menuMainLevel .itemMenu a{
-	color: #fff;
-	text-decoration: none;
-}
-.menuMainLevel .itemMenu .glyphicon,
-.menuMainLevel .itemMenu a{
-	transition: all ease-in-out 0.15s;
-}
-.menuMainLevel .itemMenu:hover .glyphicon,
-.menuMainLevel .itemMenu:hover a{
-	font-size: 18px;
-	margin-top: -5px;
-	color: #e64040;
-}
-.slider{
-	height: 700px;
-	width: 100%;
-	overflow: hidden;
-	z-index: 9;
-}
-
-.cursorPointer{
+	background: #171d25;
+	border-bottom: 2px solid #0f1721;
+	transition: all 0.2s ease-in;
 	cursor: pointer;
-}
-.logoCompany{
-	position: relative;
-	color: #e64040;
 	font-weight: bold;
-	padding-top: 18px;
-	padding-left: 10px;
-	font-size: 20px; 
 }
-.bar{
-	padding-top: 4px;
-	height: 30px;
-	width: 100%;
-	background: #e64040;
-	color: #e4d6d6;
-	font-size: 15px;
+.menuContainer .menuMainLevel .itemMenu:hover .glyphicon{
+	color: #171d25;
+	background: #7e8a98;
 }
+.menuContainer .menuMainLevel .itemMenu:hover{
+	background: #abb3bd;
+	color: #171d25;
+}
+.menuContainer .menuMainLevel .itemMenu .glyphicon{
+	font-size: 18px;
+	width: 45px;
+	height: 42px;
+	background: #252e38;
+	padding-top: 10px;
+	padding-left:14px;
+	color: #fff;
+	transition: all 0.2s ease-in;
+}
+.mainBody{
+	position: fixed;
+	left: 300px;
+	right: 0;
+	top:50px;
+	background: #f6f7f9;
+	height: 100%;
+	z-index:5;
 
+}
+.bodyHeader{
+	position: fixed;
+	top: 0;
+	left: 300px;
+	right:0;
+	height: 50px;
+	background: #252e38;
+}
+footer{
+	left: 300px;
+	position: absolute;
+	bottom: 20px;
+	width: calc(100% - 300px);
+	height: 150px;
+	background: #252e38;
+	padding: 10px;
+	color: #c6cdd4;
+	z-index: 8;
+}
+footer .glyphicon{
+	padding-top: 8px;
+	font-size: 25px;
+	color:#c6cdd4;
+
+}
+footer .icon{
+	cursor: pointer;
+	background: #252e38;
+	margin: 0 auto;
+	height: 50px;
+	width: 50px;
+	border-radius: 50%;
+	border: 2px solid #c6cdd4;
+	transition: all 0.2s ease-in;
+}
+footer .icon:hover{
+	background: #b9c2d0;
+}
+footer .icon:hover .glyphicon{
+	color: #101823;
+}
 .fixedFooter{
+	border-top: 1px solid #09111d;
 	position: fixed;
 	bottom: 0px;
 	width:100%;
 	height:20px;
-	color: #e4d6d6;
+	color: #b9c2d0;
 	font-weight: bold;
-	background: #e64040;
+	background: #101823;
 	z-index: 8;
 }
-.mainContainer{
-	min-height: 500px;
-	position: relative;
+.containerSubmenu{
+	position: fixed;
+	color: #fff;
+	width: 500px;
+	left: -200px;
+	top: 50px;
+	bottom: 16px;
+	background: #1f2123;
+	z-index: 6;
+	transition: left ease-in-out 0.7s;
 }
-.slider img{
-	width:100%;
-	margin: -15% 0;
-}
-.carousel{
-	z-index: 9;
-	height: 100%;
-}
-.carousel-inner{
-	height: 100%;
-}
-.mainBody{
-	z-index: 10;
+.containerSubmenu.open{
+	left: 300px;
 }
 .consoleConatainer .well{
 	padding-top: 2px;
 	padding-bottom: 2px;
+	margin-bottom: 5px;
+}
+.consoleConatainer .tab-content{
+	height: calc(100% - 42px);
+	overflow: auto;
 }

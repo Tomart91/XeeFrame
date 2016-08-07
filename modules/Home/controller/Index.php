@@ -28,7 +28,7 @@ class Index extends \core\controller\ClientController {
 		$userModel = new \core\auth\BasicUser();
 		$error = $userModel->login($this->request->get('login'), $this->request->get('pass'));
 		if ($error === true) {
-			$this->redirect('/Settings/Index');
+			$this->redirect('/Settings/Home/Index');
 		} else {
 			$this->redirect('/Home/Index?mode=login&error=' . $error);
 		}

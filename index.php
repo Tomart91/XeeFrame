@@ -28,7 +28,13 @@ $request->set('actionName', $action);
 core\Language::$defaultModule = $moduleName;
 $moduleName = ucwords($moduleName);
 $action = ucwords($action);
-$controllerName = '\modules\\' . $moduleName . '\\controller\\' . $action;
+if ($moduleName == 'Settings') {
+	$controllerName = '\modules\\' . $moduleName . '\\' . $action . '\\controller\\' . $controller[2];
+	$request->set('moduleName', $moduleName . '\\' . $action);
+	$request->set('actionName', $controller[2]);
+} else {
+	$controllerName = '\modules\\' . $moduleName . '\\controller\\' . $action;
+}
 
 $controllerObject = new $controllerName($request);
 try {
@@ -36,10 +42,12 @@ try {
 	if (!core\Request::isAjax()) {
 		$controllerObject->showHeader();
 		$controllerObject->preProcess();
+	} else {
+		$controllerObject->preProcessAjax();
 	}
 	if ($request->has('mode')) {
 		$mode = $request->get('mode');
-		if(method_exists($controllerObject, $mode)){
+		if (method_exists($controllerObject, $mode)) {
 			$controllerObject->$mode();
 		}
 	} else {
@@ -48,6 +56,8 @@ try {
 	if (!core\Request::isAjax()) {
 		$controllerObject->postProcess();
 		$controllerObject->showFooter();
+	} else {
+		$controllerObject->postProcessAjax();
 	}
 } catch (Exception $ex) {
 	$controllerObject->redirect('/Home/Index');

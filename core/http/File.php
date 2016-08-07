@@ -122,8 +122,9 @@ class File {
 		}
 		$fileName = $this->sanitizeUploadFileName($fileName, $this->wrongExtension);
 		$fileName = ltrim(basename(' ' . $fileName));
-		$uploadStatus = move_uploaded_file($this->file['tmp_name'], $this->pathToSave . '/' . $fileName);
-		return $uploadStatus;
+		$filePath = $this->pathToSave . '/' . $fileName;
+		$uploadStatus = move_uploaded_file($this->file['tmp_name'], $filePath);
+		return $filePath;
 	}
 
 	public function setAllowedExtensions($type) {
@@ -138,5 +139,7 @@ class File {
 			'cfm', 'js', 'vbs', 'html', 'htm', 'exe', 'bin', 'bat', 'sh', 'dll', 'phps',
 			'phtml', 'xhtml', 'rb', 'msi', 'jsp', 'shtml', 'sth', 'shtm'];
 	}
-
+	public function setPath($path){
+		$this->pathToSave = $path;
+	}
 }

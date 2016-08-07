@@ -38,7 +38,8 @@ class Database {
 
 	public function select($select, $state = 'SELECT') {
 		foreach ($select as &$sel) {
-			$sel = $this->quoteName($sel);
+			if($sel != '*')
+				$sel = $this->quoteName($sel);
 		}
 		$this->query = $state . ' ' . implode(',', $select);
 		return $this;
@@ -53,7 +54,10 @@ class Database {
 		$this->query = trim($this->query, ',');
 		return $this;
 	}
-
+	public function delete() {
+		$this->query = 'DELETE ';
+		return $this;
+	}
 	public function insert($tableName, array $data) {
 		$this->query = $this->printf('INSERT INTO %s SET ', $tableName);
 		$this->params = [];
@@ -62,7 +66,7 @@ class Database {
 			$this->params [] = $value;
 		}
 		$this->query = trim($this->query, ',');
-		return $this;
+		$this->toDo();
 	}
 
 	public function from($table) {

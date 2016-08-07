@@ -1,0 +1,37 @@
+<html>
+	<head>
+		<title>Title</title>
+		{% for CSS in CSS_SCRIPTS%}
+			<link href="{{CSS}}" rel="stylesheet" type="text/css"/>
+		{% endfor %}
+	</head>
+	<body>
+		<div id="page">
+			<input type="hidden" id="module" value="{{MODULE_NAME}}">
+			<input type="hidden" id="action" value="{{ACTION_NAME}}">
+			<input type="hidden" id="mode" value="{{MODE_NAME}}">
+			<div class="menuContainer">
+				<div class="logoCompany text-center">
+					XeeFrame
+				</div>
+				<ul class="menuMainLevel">
+					<li class="itemMenu">
+						<a href="/Settings/Home/Index">
+							<span class="glyphicon glyphicon-home"></span>
+							Home
+						</a>
+					</li>
+					<li class="itemMenu">
+						<a href="/Settings/Slider/Index">
+							<span class="glyphicon glyphicon-home"></span>
+							Slider
+						</a>
+					</li>
+				</ul>
+			</div>
+			<div class="containerSubmenu">
+			</div>
+			<div class="bodyHeader">
+
+			</div>
+			<div class="mainBody" id="pjaxContainer">

@@ -18,7 +18,7 @@ class AdminController extends BasicController {
 		$viewer->assign('ACTION_NAME', $this->request->get('actionName'));
 		$viewer->assign('MODE_NAME', $this->request->get('mode'));
 		$viewer->assign('CSS_SCRIPTS', $this->getHeaderCss());
-		$viewer->view('Header.twig');
+		$viewer->view('SettingsHeader.twig');
 	}
 
 	public function showFooter() {
@@ -28,21 +28,18 @@ class AdminController extends BasicController {
 		$viewer->assign('TIME_TO_SHOW', microtime(true) - START_TIME);
 		$viewer->assign('DEBUG_QUERIES', \core\database\Database::$debugQuery);
 		$viewer->assign('ERRORS', \core\XeeException::$errors);
-		$viewer->view('Footer.twig');
+		$viewer->view('SettingsFooter.twig');
 	}
 
 	function headerCss() {
 		$this->addHeaderCss('/libraries/bootstrap/css/bootstrap.css');
-		$this->addHeaderCss('/resources/css/font-awesome.css');
-		$this->addHeaderCss('/resources/css/grayscale.css');
-		$this->addHeaderCss('/resources/css/style.css');
+		$this->addHeaderCss('/resources/css/settingsStyle.css');
 	}
 
 	function footerJs() {
 		$this->addFooterJs('/libraries/jquery/jquery-2.2.3.min.js');
 		$this->addFooterJs('/libraries/jquery/jquery.pjax.js');
 		$this->addFooterJs('/libraries/bootstrap/js/bootstrap.min.js');
-		$this->addFooterJs('/resources/js/grayscale.js');
 		parent::footerJs();
 	}
 

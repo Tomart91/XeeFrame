@@ -1,6 +1,6 @@
 RewriteEngine on
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d 
-RewriteCond $1 !\.(gif|jpe?g|png|js|css|woff|svg|ttf)$ [NC]
+RewriteCond $1 !\.(gif|jpe?g|png|js|css|woff|svg|ttf|css.map)$ [NC]
 RewriteRule ^(.*)$ /index.php?control=$1 [NC,N,QSA,L] 
 RewriteRule ^$ /index.php [NC,N,QSA,L]

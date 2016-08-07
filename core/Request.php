@@ -7,7 +7,7 @@ class Request extends \core\BaseObject {
 	public $purifier = false;
 
 	public function init() {
-		require_once '/libraries/htmlPurifier/HTMLPurifier.auto.php';
+		\core\App::import('/libraries/htmlPurifier/HTMLPurifier.auto.php');
 		$use_charset = 'UTF-8';
 		$allowed = array(
 			'img[src|alt|title|width|height|style|data-mce-src|data-mce-json]',

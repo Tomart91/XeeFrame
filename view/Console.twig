@@ -2,7 +2,7 @@
 	<ul class="nav nav-tabs" role="tablist">
 		<li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">SQL</a></li>
 		<li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">ERRORS</a></li>
-		<li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">AJAX</a></li>
+		<li role="presentation"><a href="#ajax" aria-controls="ajax" role="tab" data-toggle="tab">AJAX</a></li>
 	</ul>
 	<div class="tab-content">
 		<div role="tabpanel" class="tab-pane active" id="home">
@@ -27,7 +27,7 @@
 						<button class="btn btn-xs btn-primary pull-right" role="button" data-toggle="collapse" href="#collapseExample{{ loop.index }}" 
 								aria-expanded="false" aria-controls="collapseExample{{ loop.index }}">
 							Backtrace
-						</button>						
+						</button>
 						<div class="collapse" id="collapseExample{{ loop.index }}">
 							<div class="well">
 								{% for TRACE in ERROR['backTrace'] %}
@@ -39,6 +39,8 @@
 				{% endfor %}
 			</div>
 		</div>
-		<div role="tabpanel" class="tab-pane" id="messages">dsdfsdf</div>
+		<div role="tabpanel" class="tab-pane" id="ajax">
+			
+		</div>
 	</div>
 </div>

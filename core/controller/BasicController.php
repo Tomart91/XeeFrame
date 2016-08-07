@@ -28,11 +28,19 @@ abstract class BasicController {
 		
 	}
 
+	function preProcessAjax() {
+		
+	}
+
 	function process() {
 		
 	}
 
 	function postProcess() {
+		
+	}
+
+	function postProcessAjax() {
 		
 	}
 

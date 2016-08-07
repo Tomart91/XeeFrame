@@ -6,11 +6,25 @@ class ClientController extends BasicController {
 
 	public function showHeader() {
 
+		$db = \core\database\Database::getInstance();
+		$result = $db->select(['*'])->from('cms_menu')->toDo();
+		$menu = [];
+		while ($row = $result->getRow()) {
+			$menu [] = $row;
+		}
+		$result = $db->select(['*'])->from('cms_slider')->toDo();
+		$slider = [];
+		while ($row = $result->getRow()) {
+			$slider [] = $row;
+		}
 		$viewer = \core\Viewer::getInstance($this->request);
 		$viewer->assign('MODULE_NAME', $this->request->get('moduleName'));
 		$viewer->assign('ACTION_NAME', $this->request->get('actionName'));
 		$viewer->assign('MODE_NAME', $this->request->get('mode'));
+		$viewer->assign('MENUS', $menu);
+		$viewer->assign('SLIDERS', $slider);
 		$viewer->assign('CSS_SCRIPTS', $this->getHeaderCss());
+		$viewer->assign('', $this->getHeaderCss());
 		$viewer->view('Header.twig');
 	}
 
