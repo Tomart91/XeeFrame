@@ -36,5 +36,7 @@ class AppConfig {
 	public static function mime($key) {
 		return self::get(__FUNCTION__, $key);
 	}
-
+	public static function cache($key) {
+		return self::get(__FUNCTION__, $key);
+	}
 }
