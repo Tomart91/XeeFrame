@@ -5,7 +5,7 @@ namespace core\crypt;
 class AES {
 
 	public static function encrypt($rawText) {
-		$key = \core\AppConfig::get('apiKey');
+		$key = \core\AppConfig::main('apiKey');
 		$iv_size = mcrypt_get_iv_size(MCRYPT_RIJNDAEL_256, MCRYPT_MODE_CBC);
 		$iv = mcrypt_create_iv($iv_size, MCRYPT_RAND);
 		$ciphertext = mcrypt_encrypt(MCRYPT_RIJNDAEL_256, $key, $rawText, MCRYPT_MODE_CBC, $iv);
@@ -15,7 +15,7 @@ class AES {
 	}
 
 	public static function decrypt($ciphertext_base64) {
-		$key = \core\AppConfig::get('apiKey');
+		$key = \core\AppConfig::main('apiKey');
 		$ciphertext_dec = base64_decode($ciphertext_base64);
 		$iv_size = mcrypt_get_iv_size(MCRYPT_RIJNDAEL_256, MCRYPT_MODE_CBC);
 		$iv_dec = substr($ciphertext_dec, 0, $iv_size);

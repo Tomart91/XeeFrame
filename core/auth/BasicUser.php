@@ -21,7 +21,7 @@ class BasicUser {
 			return 'LBL_EMAIL_IS_EXISTS';
 		} else {
 			$hashPass = hash('sha512', $rawPass);
-			$hashPass = hash('sha512', $hashPass . \core\AppConfig::get('salt'));
+			$hashPass = hash('sha512', $hashPass . \core\AppConfig::main('salt'));
 			$db->insert($this->tableName, [
 				$this->login => $login,
 				$this->password => $hashPass
@@ -40,7 +40,7 @@ class BasicUser {
 		if ($result->isExists()) {
 			$userRow = $result->getRow();
 			$hashPass = hash('sha512', $rawPass);
-			$hashPass = hash('sha512', $hashPass . \core\AppConfig::get('salt'));
+			$hashPass = hash('sha512', $hashPass . \core\AppConfig::main('salt'));
 			if ($userRow[$this->password] == $hashPass) {
 				$userAgent = $_SERVER['HTTP_USER_AGENT'];
 				Session::startSession();

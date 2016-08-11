@@ -1,0 +1,5 @@
+<?php
+
+$config = [
+	'isDebug' => false,
+];

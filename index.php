@@ -4,7 +4,7 @@ $startTime = microtime(true);
 require 'AutoLoader.php';
 define('ROOT_DIR', __DIR__);
 define('START_TIME', $startTime);
-if (\core\AppConfig::get('isDebug')) {
+if (\core\AppConfig::debug('isDebug')) {
 	set_error_handler(['\core\XeeException', 'errorHandler']);
 	register_shutdown_function(['\core\XeeException', 'fatalErrorHandler']);
 }

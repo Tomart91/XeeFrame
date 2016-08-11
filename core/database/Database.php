@@ -14,9 +14,9 @@ class Database {
 	public static $debugQuery = [];
 
 	static function connect() {
-		$dsn = 'mysql:dbname=' . AppConfig::get('dbDatabse') . ';host=' . AppConfig::get('dbAddress');
-		$user = AppConfig::get('dbUser');
-		$password = AppConfig::get('dbPass');
+		$dsn = 'mysql:dbname=' . AppConfig::db('databse') . ';host=' . AppConfig::db('address');
+		$user = AppConfig::db('user');
+		$password = AppConfig::db('pass');
 		self::$database = new \PDO($dsn, $user, $password);
 	}
 
@@ -28,7 +28,7 @@ class Database {
 		$timeStart = microtime(true);
 		$stmt = self::$database->prepare($query);
 		$stmt->execute($params);
-		if (AppConfig::get('isDebug')) {
+		if (AppConfig::debug('isDebug')) {
 			self::$debugQuery [] = DebugQuery::getInstance([
 						'query' => $query,
 						'params' => $params,

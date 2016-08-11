@@ -9,7 +9,7 @@ class App {
 		return ((float) $usec + (float) $sec);
 	}
 	static function import($file){
-		require ROOT_DIR . $file;
+		return require ROOT_DIR . $file;
 	}
 
 }

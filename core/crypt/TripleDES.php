@@ -7,7 +7,7 @@ class TripleDES {
 	const bitCheck = 8;
 
 	static function encrypt($text) {
-		$key = \core\AppConfig::get('apiKey');
+		$key = \core\AppConfig::main('apiKey');
 		$iv_size = mcrypt_get_iv_size(MCRYPT_TRIPLEDES, MCRYPT_MODE_CBC);
 		$iv = mcrypt_create_iv($iv_size, MCRYPT_RAND);
 		$text_num = str_split($text, self::bitCheck);
@@ -23,7 +23,7 @@ class TripleDES {
 	}
 
 	static function decrypt($encrypted_text) {
-		$key = \core\AppConfig::get('apiKey');
+		$key = \core\AppConfig::main('apiKey');
 		$cipher = mcrypt_module_open(MCRYPT_TRIPLEDES, '', 'cbc', '');
 		$encrypted_text = base64_decode($encrypted_text);
 		$iv_size = mcrypt_get_iv_size(MCRYPT_TRIPLEDES, MCRYPT_MODE_CBC);

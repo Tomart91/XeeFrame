@@ -11,7 +11,7 @@ class File {
 	public $mimeType = [];
 
 	public function getMimeContentType() {
-		require 'core/config/mimetypes.php';
+		$mimeTypes = \core\AppConfig::getAll('mime');
 		$filename = $this->file['tmp_name'];
 		$fileNameDevided = explode('.', $filename);
 		$ext = strtolower(end($fileNameDevided));
@@ -139,7 +139,9 @@ class File {
 			'cfm', 'js', 'vbs', 'html', 'htm', 'exe', 'bin', 'bat', 'sh', 'dll', 'phps',
 			'phtml', 'xhtml', 'rb', 'msi', 'jsp', 'shtml', 'sth', 'shtm'];
 	}
-	public function setPath($path){
+
+	public function setPath($path) {
 		$this->pathToSave = $path;
 	}
+
 }

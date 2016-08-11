@@ -23,7 +23,7 @@ class AdminController extends BasicController {
 
 	public function showFooter() {
 		$viewer = \core\Viewer::getInstance($this->request);
-		$viewer->assign('IS_DEBUG', \core\AppConfig::get('isDebug'));
+		$viewer->assign('IS_DEBUG', \core\AppConfig::debug('isDebug'));
 		$viewer->assign('JS_SCRIPTS', $this->getFooterJs());
 		$viewer->assign('TIME_TO_SHOW', microtime(true) - START_TIME);
 		$viewer->assign('DEBUG_QUERIES', \core\database\Database::$debugQuery);
