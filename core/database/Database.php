@@ -28,17 +28,19 @@ class Database {
 		$timeStart = microtime(true);
 		$stmt = self::$database->prepare($query);
 		$stmt->execute($params);
-		self::$debugQuery [] = DebugQuery::getInstance([
-					'query' => $query,
-					'params' => $params,
-					'time' =>  microtime(true) - $timeStart
-		]);
+		if (AppConfig::get('isDebug')) {
+			self::$debugQuery [] = DebugQuery::getInstance([
+						'query' => $query,
+						'params' => $params,
+						'time' => microtime(true) - $timeStart
+			]);
+		}
 		return Result::getInstance($stmt);
 	}
 
 	public function select($select, $state = 'SELECT') {
 		foreach ($select as &$sel) {
-			if($sel != '*')
+			if ($sel != '*')
 				$sel = $this->quoteName($sel);
 		}
 		$this->query = $state . ' ' . implode(',', $select);
@@ -54,10 +56,12 @@ class Database {
 		$this->query = trim($this->query, ',');
 		return $this;
 	}
+
 	public function delete() {
 		$this->query = 'DELETE ';
 		return $this;
 	}
+
 	public function insert($tableName, array $data) {
 		$this->query = $this->printf('INSERT INTO %s SET ', $tableName);
 		$this->params = [];
