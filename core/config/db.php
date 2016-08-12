@@ -1,6 +1,6 @@
 <?php
 
-$config = [
+return [
 	'user' => 'root',
 	'pass' => '',
 	'address' => 'localhost',

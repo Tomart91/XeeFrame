@@ -8,7 +8,7 @@ class AppConfig {
 
 	static private function load($type) {
 		if (!isset(self::$loadCache[$type])) {
-			require(ROOT_DIR . '/core/config/' . $type . '.php');
+			$config = require(ROOT_DIR . '/core/config/' . $type . '.php');
 			self::$loadCache[$type] = $config;
 		}
 	}

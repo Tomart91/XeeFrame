@@ -1,6 +1,6 @@
 <?php
 
-$config = [
+return [
 	'txt' => 'text/plain',
 	'htm' => 'text/html',
 	'html' => 'text/html',
