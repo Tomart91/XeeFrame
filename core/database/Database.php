@@ -8,8 +8,8 @@ use core\database\Result;
 class Database {
 
 	static $database = false;
-	private $query = '';
-	private $params = [];
+	protected $query = '';
+	protected $params = [];
 	protected $nameQuote = '`';
 	public static $debugQuery = [];
 
