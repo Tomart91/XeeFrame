@@ -17,5 +17,8 @@ class App {
 	static function getVersion() {
 		return self::import('/core/version.php');
 	}
+	static function getMigrationVersion() {
+		return self::import('/core/migration.php');
+	}
 
 }

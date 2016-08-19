@@ -25,13 +25,13 @@ class Response {
 	public function emit() {
 		if ($this->type == self::JSON) {
 			$response = json_encode($value);
+			$response = preg_replace('/[\x00-\x1F\x80-\xFF]/', '', $response);
 		} else if ($this->type == self::CLI) {
 			$response = '';
 			foreach ($this->valueMap as $var) {
 				$response .= $var . PHP_EOL;
 			}
 		}
-		$response = preg_replace('/[\x00-\x1F\x80-\xFF]/', '', $response);
 		echo $response;
 	}
 

@@ -1,6 +1,4 @@
 <?php
 
-$version = 0.29;
-return [
-	'version' => $version
-];
+$version = 0.30;
+return $version;

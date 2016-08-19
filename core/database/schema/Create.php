@@ -23,21 +23,20 @@ class Create {
 		$query = 'CREATE TABLE ' . $this->tableName . ' (';
 		foreach ($this->columns as $column) {
 			$query .= $column->name . ' ' . $column->type . ' (' . $column->length . ')';
-			if($column->primaryKey)
-				$query .= ' PRIMARY KEY ';
-			if($column->notNull)
-				$query .= ' NOT NULL ';
-			if($column->unsigned)
+			if ($column->unsigned)
 				$query .= ' UNSIGNED ';
-			if($column->autoIncrement)
+			if ($column->primaryKey)
+				$query .= ' PRIMARY KEY ';
+			if ($column->notNull)
+				$query .= ' NOT NULL ';
+			if ($column->autoIncrement)
 				$query .= ' AUTO_INCREMENT ';
-			if($column->zeroFill)
+			if ($column->zeroFill)
 				$query .= ' ZEROFILL ';
 			$query .= ', ';
 		}
 		$query = trim($query, ', ');
 		$query .= ')';
-		var_dump($query);
 		return $query;
 	}
 

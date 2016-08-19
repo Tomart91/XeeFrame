@@ -39,6 +39,9 @@ class Console extends \core\BaseObject {
 		$action = $this->get('action');
 		$arg = $this->get('arguments');
 		$data = call_user_func_array(__NAMESPACE__ . "\\$class::$action", $arg);
+		if (is_string($data)) {
+			$data = [$data];
+		}
 		$response = \core\Response::getInstance();
 		$response->setData($data);
 		$response->emitType(\core\Response::CLI);

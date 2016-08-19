@@ -20,4 +20,9 @@ class Schema extends Database {
 		return $this->doQuery($query);
 	}
 
+	public function dropTable($tableName) {
+		$query = 'DROP TABLE `' . $tableName . '`';
+		$this->doQuery($query);
+	}
+
 }
