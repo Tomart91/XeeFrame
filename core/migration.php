@@ -1,2 +1,2 @@
 <?php
-return 0.3;
+return 0.0;
