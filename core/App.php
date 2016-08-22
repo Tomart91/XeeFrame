@@ -10,15 +10,20 @@ class App {
 	}
 
 	static function import($file) {
-		
+
 		return require ROOT_DIR . $file;
 	}
 
 	static function getVersion() {
 		return self::import('/core/version.php');
 	}
+
 	static function getMigrationVersion() {
 		return self::import('/core/migration.php');
+	}
+
+	static function dump($data) {
+		Dump::printValues($data);
 	}
 
 }
