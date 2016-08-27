@@ -12,10 +12,12 @@ class AppConfig {
 			self::$loadCache[$type] = $config;
 		}
 	}
+
 	public static function getAll($type) {
 		self::load($type);
 		return self::$loadCache[$type];
 	}
+
 	public static function get($type, $key) {
 		self::load($type);
 		return self::$loadCache[$type][$key];
@@ -36,7 +38,13 @@ class AppConfig {
 	public static function mime($key) {
 		return self::get(__FUNCTION__, $key);
 	}
+
 	public static function cache($key) {
 		return self::get(__FUNCTION__, $key);
 	}
+
+	public static function api($key) {
+		return self::get(__FUNCTION__, $key);
+	}
+
 }
