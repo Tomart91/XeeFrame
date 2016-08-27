@@ -12,7 +12,6 @@ var app = {
 						url + ' ' + jqXHR.status + ' ' +  jqXHR.statusText + 
 				'</div>'
 				$('#ajax').append(html);
-				console.log(jqXHR);
 			} catch (e) {
 				if (typeof errorCallback == 'function')
 					errorCallback(response);

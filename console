@@ -3,8 +3,10 @@
 if (php_sapi_name() !== 'cli') {
 	return;
 }
-require 'AutoLoader.php';
 define('ROOT_DIR', __DIR__);
+require 'core/main/Kernel.php';
+core\main\Kernel::registerAutoloader();
+
 $console = \cli\Console::getInstance($argc, $argv);
 $console->handle();
 

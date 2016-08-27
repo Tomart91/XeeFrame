@@ -24,9 +24,11 @@ class Response {
 
 	public function emit() {
 		if ($this->type == self::JSON) {
-			$response = json_encode($value);
+			header('Content-type: text/json; charset=UTF-8');
+			$response = json_encode($this->valueMap);
 			$response = preg_replace('/[\x00-\x1F\x80-\xFF]/', '', $response);
 		} else if ($this->type == self::CLI) {
+			header('Content-type: text/plain; charset=UTF-8');
 			$response = '';
 			foreach ($this->valueMap as $var) {
 				$response .= $var . PHP_EOL;

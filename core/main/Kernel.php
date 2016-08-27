@@ -4,7 +4,7 @@ namespace core\main;
 
 class Kernel {
 
-	private static function registerAutoloader() {
+	public static function registerAutoloader() {
 		require_once ROOT_DIR . '/core/autoloader/autoload_real.php';
 		\ComposerAutoloaderInit::getLoader();
 		\Twig_Autoloader::register();
@@ -23,6 +23,10 @@ class Kernel {
 		$controller = explode('/', $controller);
 		$moduleName = $controller[0];
 
+		if ($moduleName == 'api') {
+			\api\ApiKernel::init($controller[1]);
+			return;
+		}
 		if (empty($moduleName)) {
 			$moduleName = 'Home';
 		}
@@ -34,8 +38,8 @@ class Kernel {
 		$request->set('moduleName', $moduleName);
 		$request->set('actionName', $action);
 		\core\Language::$defaultModule = $moduleName;
-		$moduleName = ucwords($moduleName);
-		$action = ucwords($action);
+		$moduleName = \ucwords($moduleName);
+		$action = \ucwords($action);
 		if ($moduleName == 'Settings') {
 			$controllerName = '\modules\\' . $moduleName . '\\' . $action . '\\controller\\' . $controller[2];
 			$request->set('moduleName', $moduleName . '\\' . $action);

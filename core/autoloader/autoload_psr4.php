@@ -9,4 +9,5 @@ return [
 	'core\\' => [$baseDir . '/core/'],
 	'modules\\' => [$baseDir . '/modules/'],
 	'cli\\' => [$baseDir . '/cli/'],
+	'api\\' => [$baseDir . '/api/'],
 ];
