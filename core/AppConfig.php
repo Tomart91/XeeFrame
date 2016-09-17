@@ -23,28 +23,7 @@ class AppConfig {
 		return self::$loadCache[$type][$key];
 	}
 
-	public static function db($key) {
-		return self::get(__FUNCTION__, $key);
+	public static function __callStatic($name, $arguments) {
+		return self::get($name, $arguments[0]);
 	}
-
-	public static function debug($key) {
-		return self::get(__FUNCTION__, $key);
-	}
-
-	public static function main($key) {
-		return self::get(__FUNCTION__, $key);
-	}
-
-	public static function mime($key) {
-		return self::get(__FUNCTION__, $key);
-	}
-
-	public static function cache($key) {
-		return self::get(__FUNCTION__, $key);
-	}
-
-	public static function api($key) {
-		return self::get(__FUNCTION__, $key);
-	}
-
 }
