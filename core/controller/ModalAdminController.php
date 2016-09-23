@@ -2,8 +2,6 @@
 
 namespace core\controller;
 
-use \core\Session;
-
 class ModalAdminController extends AdminController {
 
 	public function preProcessAjax() {

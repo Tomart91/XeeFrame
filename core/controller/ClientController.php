@@ -24,7 +24,6 @@ class ClientController extends BasicController {
 		$viewer->assign('MENUS', $menu);
 		$viewer->assign('SLIDERS', $slider);
 		$viewer->assign('CSS_SCRIPTS', $this->getHeaderCss());
-		$viewer->assign('', $this->getHeaderCss());
 		$viewer->view('Header.twig');
 	}
 

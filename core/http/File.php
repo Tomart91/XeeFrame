@@ -33,7 +33,7 @@ class File {
 		return $result;
 	}
 
-	function validateCodeInjection() {
+	public function validateCodeInjection() {
 		$imageContents = file_get_contents($this->file['tmp_name']);
 		if (preg_match('/(<\?php?(.*?))/i', $imageContents) == 1) {
 			throw new \core\XeeException;
@@ -70,7 +70,6 @@ class File {
 	 * @return String - Sanitized file name
 	 */
 	public static function sanitizeUploadFileName($fileName, $wrongExtension) {
-		//$fileName = vtlib\Functions::slug($fileName);
 		$fileName = rtrim($fileName, '\\/<>?*:"<>|');
 		$fileNameParts = explode(".", $fileName);
 		$badExtensionFound = false;
@@ -123,7 +122,7 @@ class File {
 		$fileName = $this->sanitizeUploadFileName($fileName, $this->wrongExtension);
 		$fileName = ltrim(basename(' ' . $fileName));
 		$filePath = $this->pathToSave . '/' . $fileName;
-		$uploadStatus = move_uploaded_file($this->file['tmp_name'], $filePath);
+		move_uploaded_file($this->file['tmp_name'], $filePath);
 		return $filePath;
 	}
 
